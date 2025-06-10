@@ -21,7 +21,7 @@ export default function Activities() {
   }
 
   return (
-    <Box sx={{backgroundColor : "#F2F2F2" , height : { xs : "auto" } , width : { xs : "99%" , md : "100%" }}} padding={"15px"} borderRadius={"10px"} display={"flex"} flexDirection={"column"} gap={"20px"}>
+    <Box sx={{backgroundColor : "#F2F2F2" , height : { xs : "auto" } , width : { xs : "97%" , md : "99%" }}} padding={"15px"} borderRadius={"10px"} display={"flex"} flexDirection={"column"} gap={"20px"}>
     <Typography component={"h3"} fontSize={"18px"}>فعالیت ها</Typography>
     <SearchComponent list={data}/>
     <AddComponent refetch={refreshData} title="activities" componentTitle="فعالیت"/>

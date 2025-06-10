@@ -23,7 +23,7 @@ export default function Plans() {
       sx={{
         backgroundColor: "#F2F2F2",
         height: { xs: "auto" },
-        width: { xs: "97%", md: "80%" },
+        width: { xs: "97%", md: "99%" },
       }}
       padding={"15px"}
       borderRadius={"10px"}
