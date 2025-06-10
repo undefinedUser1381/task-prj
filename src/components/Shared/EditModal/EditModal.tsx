@@ -1,4 +1,11 @@
-import { Box, Button, Modal, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Modal,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 interface DetailProps {
   id: string;
@@ -15,6 +22,7 @@ interface EditModalProps {
   setEditValue: (value: string) => void;
   details: DetailProps;
   onSaveEdit: () => Promise<void>;
+  isLoading: boolean;
 }
 
 const style = {
@@ -36,6 +44,7 @@ export default function EditModal({
   setEditValue,
   editValue,
   onSaveEdit,
+  isLoading,
 }: EditModalProps) {
   return (
     <Modal open={isEditModalOpen} onClose={closeModal}>
@@ -102,7 +111,11 @@ export default function EditModal({
               },
             }}
           >
-            ویرایش
+            {isLoading ? (
+              <CircularProgress sx={{ color: "white" }} size="20px" />
+            ) : (
+              "ویرایش"
+            )}
           </Button>
         </Box>
       </Box>

@@ -18,10 +18,13 @@ export default function AddComponent({
 }: AddComponentProp) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const openAddModal = () => setOpen(true);
   const closeAddModal = () => setOpen(false);
 
   const handleAdditems = async () => {
+    setIsLoading(true);
+
     const newitem = {
       id: crypto.randomUUID().toString(),
       title: value,
@@ -33,11 +36,13 @@ export default function AddComponent({
 
     if (title === "aims") response = await createNewAim(newitem);
     else if (title === "plans") response = await createNewPlan(newitem);
-    else if (title === "activities") response = await createNewActivity(newitem);
+    else if (title === "activities")
+      response = await createNewActivity(newitem);
 
     if (response?.status === 201) {
       refetch();
       setValue("");
+      setIsLoading(false);
       closeAddModal();
     }
   };
@@ -51,7 +56,7 @@ export default function AddComponent({
       flexDirection={"column"}
       gap={"20px"}
       height={"auto"}
-      sx={{ backgroundColor: "#FFFFFF" , width : {xs : "92%" , md : "97%"}}}
+      sx={{ backgroundColor: "#FFFFFF", width: { xs: "92%", md: "97%" } }}
     >
       <Typography component={"h2"} color="blue" fontSize={"18px"}>
         اضافه کردن
@@ -97,6 +102,7 @@ export default function AddComponent({
       </Button>
       <AddModal
         value={value}
+        isLoading={isLoading}
         setValue={setValue}
         modalTitle={componentTitle}
         isOpenModal={open}

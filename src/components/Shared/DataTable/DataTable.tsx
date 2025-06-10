@@ -39,6 +39,7 @@ export default function DataTable({
   const [deleteId, setDeleteId] = useState("0");
   const [findedItem, setFindedItem] = useState<DataProps | null>(null);
   const [editValue, setEditValue] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const findEditedItem = (id: string) => {
     const findItemToEdit = dataTable.find((item) => item.id === id);
@@ -64,6 +65,7 @@ export default function DataTable({
 
   const handleUpdateItems = async () => {
     let response;
+    setIsLoading(true)
 
     if (title === "aims" && findedItem)
       response = await editAim({ ...findedItem, title: editValue });
@@ -189,6 +191,7 @@ export default function DataTable({
           editValue={editValue}
           setEditValue={setEditValue}
           onSaveEdit={handleUpdateItems}
+          isLoading={isLoading}
         />
       )}
     </Box>
