@@ -30,7 +30,6 @@ const style = {
 };
 
 export default function EditModal({
-  onClick,
   details,
   isEditModalOpen,
   closeModal,
