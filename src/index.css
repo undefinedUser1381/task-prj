@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "Kalame";
+  src: url("../public/fonts/Kalame-Regular.ttf") format("truetype");
+}
+
+body {
+  background-color: #ffffff;
+}
